@@ -1,9 +1,12 @@
 import React from "react";
 import Login from "./Login";
-import { Card } from "@mui/material";
 import Register from "./Register";
+import { Card } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 const Authentication = () => {
+  const location = useLocation();
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       {/* Left Side Image */}
@@ -12,7 +15,7 @@ const Authentication = () => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "contain", // Try "cover" here if you want to fill the area with cropping
+            objectFit: "cover",
           }}
           src="https://cdn.pixabay.com/photo/2018/11/29/21/51/social-media-3846597_1280.png"
           alt="Social Media Background"
@@ -20,7 +23,6 @@ const Authentication = () => {
       </div>
 
       {/* Right Side Content */}
-
       <div
         style={{
           flex: 5,
@@ -54,8 +56,8 @@ const Authentication = () => {
                 Connecting Lives, Sharing Stories: Your Social World, Your Way
               </p>
             </div>
-            <Login />
-            {/* <Register /> */}
+            {/* Conditionally render Login or Register based on the path */}
+            {location.pathname === "/register" ? <Register /> : <Login />}
           </div>
         </Card>
       </div>

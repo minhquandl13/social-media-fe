@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { registerUserAction } from "../../redux/Auth/auth.action";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   firstName: "",
@@ -41,6 +42,8 @@ const Register = () => {
   const handleChange = (event) => {
     setGender(event.target.value);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -149,6 +152,18 @@ const Register = () => {
           </div>
         </Form>
       </Formik>
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: "1rem",
+        }}
+      >
+        <p style={{ margin: 0 }}>If you already have an account?</p>
+        <Button onClick={() => navigate("/login")}>Login</Button>
+      </div>
     </div>
   );
 };
