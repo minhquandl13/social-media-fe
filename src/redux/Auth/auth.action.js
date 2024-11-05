@@ -13,7 +13,7 @@ export const loginUserAction = (loginData) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
     const { data } = await axios.post(
-      `${API_BASE_URL}/auth/signin)`,
+      `${API_BASE_URL}/auth/signin`,
       loginData.data
     );
 
@@ -34,7 +34,7 @@ export const registerUserAction = (loginData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
     const { data } = await axios.post(
-      `${API_BASE_URL}/auth/signup)`,
+      `${API_BASE_URL}/auth/signup`,
       loginData.data
     );
 
@@ -42,7 +42,7 @@ export const registerUserAction = (loginData) => async (dispatch) => {
       localStorage.setItem("jwt", data.jwt);
     }
 
-    console.log("register", data);
+    console.log("---------register", data);
 
     dispatch({ type: REGISTER_SUCCESS, payload: data.jwt });
   } catch (error) {

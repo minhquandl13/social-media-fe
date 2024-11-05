@@ -8,6 +8,8 @@ import {
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { registerUserAction } from "../../redux/Auth/auth.action";
 
 const initialValues = {
   firstName: "",
@@ -28,9 +30,12 @@ const validationSchema = Yup.object().shape({
 
 const Register = () => {
   const [gender, setGender] = useState("");
+  const dispatch = useDispatch();
+
   const handleSubmit = (values) => {
     values.gender = gender;
     console.log("Form submitted:", values);
+    dispatch(registerUserAction({ data: values }));
   };
 
   const handleChange = (event) => {
