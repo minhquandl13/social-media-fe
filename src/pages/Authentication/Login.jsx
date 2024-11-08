@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { Field, Formik, Form, ErrorMessage } from "formik";
-import React, { useState } from "react";
+import React /*, { useState }*/ from "react";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { loginUserAction } from "../../redux/Auth/auth.action";
@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  const [formValue, setFormValue] = useState();
+  // const [formValue, setFormValue] = useState();
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
